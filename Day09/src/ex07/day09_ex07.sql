@@ -1,0 +1,7 @@
+CREATE OR REPLACE FUNCTION func_minimum(VARIADIC arr NUMERIC[]) RETURNS NUMERIC
+    LANGUAGE SQL
+AS
+$BODY$
+SELECT MIN($1[i])
+FROM generate_subscripts($1, 1) g(i);
+$BODY$;
